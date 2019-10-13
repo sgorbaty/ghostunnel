@@ -45,6 +45,7 @@ if __name__ == "__main__":
         try:
             pair2 = SocketPair(
                 TlsClient('client2', 'root', 13001), TcpServer(13002))
+            pair2.client.get_socket().recv(1)
             raise Exception('failed to reject client2')
         except ssl.SSLError:
             print_ok("client2 correctly rejected")

@@ -29,7 +29,8 @@ if __name__ == "__main__":
         try:
             pair = SocketPair(
                 TlsClient('client', 'root', 13001), TcpServer(13003))
-            raise Exception('client should have failed to connect')
+            if pair.server.get_socket() is not None:
+                raise Exception('client should have failed to connect')
         except socket.timeout:
             print_ok("timeout when nothing is listening on 13003")
 

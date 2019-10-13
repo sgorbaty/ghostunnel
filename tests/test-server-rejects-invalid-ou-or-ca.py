@@ -43,17 +43,23 @@ if __name__ == "__main__":
         try:
             pair = SocketPair(
                 TlsClient('client2', 'root', 13001), TcpServer(13002))
+            pair.client.get_socket().recv(1)
             raise Exception('failed to reject client2')
         except ssl.SSLError:
             print_ok("client2 correctly rejected")
+        finally:
+            pair.cleanup()
 
         # connect with other_client1, confirm that the tunnel isn't up
         try:
             pair = SocketPair(
                 TlsClient('other_client1', 'root', 13001), TcpServer(13002))
+            pair.client.get_socket().recv(1)
             raise Exception('failed to reject other_client1')
         except ssl.SSLError:
             print_ok("other_client1 correctly rejected")
+        finally:
+            pair.cleanup()
 
         print_ok("OK")
     finally:
