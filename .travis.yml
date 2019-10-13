@@ -20,6 +20,8 @@ deploy:
       - dist/ghostunnel-${TRAVIS_TAG}-linux-amd64-with-pkcs11.sha256sum
       - dist/ghostunnel-${TRAVIS_TAG}-linux-arm64-with-pkcs11
       - dist/ghostunnel-${TRAVIS_TAG}-linux-arm64-with-pkcs11.sha256sum
+      - dist/ghostunnel-${TRAVIS_TAG}-linux-386-with-pkcs11
+      - dist/ghostunnel-${TRAVIS_TAG}-linux-386-with-pkcs11.sha256sum
       - dist/ghostunnel-${TRAVIS_TAG}-darwin-amd64-with-pkcs11
       - dist/ghostunnel-${TRAVIS_TAG}-darwin-amd64-with-pkcs11.sha256sum
       - dist/ghostunnel-${TRAVIS_TAG}-windows-386-with-pkcs11.exe
