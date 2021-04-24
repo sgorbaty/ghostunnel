@@ -1,5 +1,7 @@
 module github.com/ghostunnel/ghostunnel
 
+replace github.com/github/certstore => ./certstore
+
 require (
 	github.com/Masterminds/goutils v1.1.0 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
@@ -15,7 +17,6 @@ require (
 	github.com/imdario/mergo v0.3.10 // indirect
 	github.com/kavu/go_reuseport v1.5.0
 	github.com/letsencrypt/pkcs11key/v4 v4.0.0
-	github.com/mastahyeti/certstore v0.0.5
 	github.com/mattn/go-colorable v0.1.7 // indirect
 	github.com/miekg/pkcs11 v1.0.3 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect
