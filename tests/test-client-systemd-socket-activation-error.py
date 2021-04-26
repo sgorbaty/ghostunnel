@@ -29,6 +29,27 @@ if __name__ == "__main__":
         if ghostunnel.returncode == 0:
             raise Exception('Should fail on invalid socket')
 
+        # start ghostunnel
+        ghostunnel = run_ghostunnel([
+                'client',
+                '--listen=systemd:client',
+                '--target={0}:{1}'.format(LOCALHOST, STATUS_PORT),
+                '--keystore=client.p12',
+                '--status=systemd:status',
+                '--cacert=root.crt'],
+                prefix=[
+                'systemd-socket-activate',
+                '--listen={0}:13001'.format(LOCALHOST),
+                '--listen={0}:{1}'.format(LOCALHOST, STATUS_PORT),
+                # no fdname provided to test error checking
+                '-E=GHOSTUNNEL_INTEGRATION_TEST',
+                '-E=GHOSTUNNEL_INTEGRATION_ARGS',
+                ])
+
+        ghostunnel.wait(timeout=10)
+        if ghostunnel.returncode == 0:
+            raise Exception('Should fail on invalid socket')
+
         print_ok("OK")
     finally:
         terminate(ghostunnel)
